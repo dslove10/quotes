@@ -1,0 +1,116 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+.messages{
+	margin: 10px 0px 0px 130px;
+}
+
+#registration{
+	display: inline-block;
+	border: 2px solid black;
+	padding: 20px;
+	vertical-align: top;
+	margin: 20px;
+}
+
+#registration input{
+	display: block;
+	margin-bottom: 5px;
+}
+
+#login{
+	display: inline-block;
+	border: 2px solid black;
+	padding: 20px;
+	vertical-align: top;
+	margin: 20px;
+}
+
+#login input{
+	display: block;
+	margin-bottom: 5px;
+}
+
+#container{
+	width: 900px;
+}
+
+#header h1, a{
+	display: inline-block;
+}
+
+#header a{
+	margin-left: 450px;
+}
+
+#all_quotes{
+	display: inline-block;
+	width: 350px;
+	height: 550px;
+	margin: 20px 50px 20px 20px;
+	border: 2px solid black;
+	overflow: scroll;
+	vertical-align: top;
+}
+
+#favs_add{
+	display: inline-block;
+	width: 350px;
+	height: 550px;
+	margin: 20px 50px 20px 20px;
+	vertical-align: top;
+}
+
+#favorites{
+	height: 300px;
+	border: 2px solid black;
+	overflow: scroll;
+}
+
+#quote{
+	border: 2px solid black;
+	padding: 10px;
+	margin: 10px;
+}
+
+#add_quote{
+	margin-top: 40px;
+}
+
+#add_quote form{
+	margin-top: 40px;
+}
+
+#add_quote input, textarea{
+	display: block;
+	margin: 15px 0px 5px 175px;
+}
+
+.user{
+	display: inline-block;
+	vertical-align: top;
+}
+
+.user p{
+	margin-bottom: 10px;
+}
+
+.links{
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 400px;
+}
+
+#user_quotes{
+	margin: 20px;
+}
+
+#user_quotes p{
+	margin: 10px;
+}
+
+.auth_color{
+	color: red;
+}

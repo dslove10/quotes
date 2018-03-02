@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Quotes</title>
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'users/css/quote_styles.css' %}">
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<h1>Welcome, {{ request.session.alias }}</h1>
+				<a href="/logout">Logout</a>
+			</div>
+			<div id="all_quotes">
+				<h4>Quoteable Quotes</h4>
+				{% for quote in all_quotes %}
+				<div id="quote">
+					<p>{{ quote.author }}: {{ quote.quote }}</p>
+					<p>Posted by
+						<a href="/users/{{ quote.quote_creator_id }}">{{ quote.quote_creator.alias }}</a>
+					</p>
+					<form action="/quotes/add_quote/{{ quote.id }}" method="post">
+						{% csrf_token %}
+						<input type="submit" name="submit" value="Add to My List">
+					</form>
+				</div>
+				{% endfor %}
+			</div>
+			<div id="favs_add">
+				<div id="favorites">
+					<h4>Your Favorites</h4>
+					{% for quote in fav_quotes %}
+					<div id="quote">
+						<p>{{ quote.author }}: {{ quote.quote }}</p>
+						<p>Posted by
+							<a href="/users/{{ quote.quote_creator_id }}">{{ quote.quote_creator.alias }}</a>
+						</p>
+						<form action="/quotes/remove/{{ quote.id }}", method="post">
+							{% csrf_token %}
+							<input type="submit" name="submit" value="Remove from My List">
+						</form>
+					</div>
+					{% endfor %}
+				</div>
+				<div id="add_quote">
+					{% if messages %}
+						<ul class="messages">
+							{% for message in messages %}
+							<li {% if message.tags %} class="{{message.tags}}"{% endif %}>{{ message }}</li>
+							{% endfor %}	
+						</ul>
+					{% endif %}
+					<h4>Contribute a Quote</h4>
+					<form action="/quotes/add" method="post">
+						{% csrf_token %}
+						<input type="text" name="author" placeholder="Quoted By">
+						<textarea cols="20" rows="5" name="quote" placeholder="Quote"></textarea>
+						<input type="submit" name="submit">
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

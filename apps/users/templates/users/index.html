@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Register/Login</title>
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'users/css/quote_styles.css' %}">
+	</head>
+	<body>
+		{% if messages %}
+		<ul class="messages">
+			{% for message in messages %}
+			<li {% if message.tags %} class="{{message.tags}}"{% endif %}>{{ message }}</li>
+			{% endfor %}	
+		</ul>
+		{% endif %}
+		<div id="registration">
+			<h2>Register</h2>
+			<form action="/create" method="post">
+				{% csrf_token %}
+				<label>Name:
+					<input type="text" name="name">
+				</label>
+				<label>Alias:
+					<input type="text" name="alias">
+				</label>
+				<label>Email Address:
+					<input type="text" name="email">
+				</label>
+				<label>Password:
+					<input type="password" name="password">
+				</label>
+				<label>Confirm Password:
+					<input type="password" name="confirm">
+				</label>
+				<label>Date Of Birth:
+					<input type="date" name="dob" max="2018-2-28">
+				</label>
+				<input type="submit" name="submit" value="Register">
+			</form>
+		</div>
+		<div id="login">
+			<h2>Login</h2>
+			<form action="/login" method="post">
+				{% csrf_token %}
+				<input type="text" name="email" placeholder="Email Address">
+				<input type="password" name="password" placeholder="Enter Password">
+				<input type="submit" name="submit" value="Login">
+			</form>
+		</div>
+	</body>
+</html>

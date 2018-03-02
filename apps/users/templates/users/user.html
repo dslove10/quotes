@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Quotes</title>
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'users/css/quote_styles.css' %}">
+	</head>
+	<body>
+		<div id="user_contain">
+			<div id="head">
+				<div class="user">
+					<p>Posts by {{ request.session.user }}</p>
+					<p>Count: {{ quote_count }}</p>
+				</div>
+				<p class="links">
+					<a href="/quotes">Dashboard</a> |
+					<a href="/logout">Logout</a>
+				</p>
+			</div>
+			<div id="user_quotes">
+				{% for quote in this_user %}
+				<p><span class="auth_color">{{ quote.author }}:</span> {{ quote.quote }}</p>
+				{% endfor %}
+			</div>
+		</div>
+	</body>
+</html>
